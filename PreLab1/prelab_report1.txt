@@ -17,38 +17,39 @@ else:
 Fill in the truth table. Change XX values to 00, 01, 10 or 11.
 
 a1a0b1b0 	c1c0
-0000 		XX
-0001 		XX
-0010 		XX
-0011 		XX
-0100 		XX
-0101 		XX
-0110 		XX
-0111 		XX
-1000 		XX
-1001 		XX
-1010 		XX
-1011 		XX
-1100 		XX
-1101 		XX
-1110 		XX
-1111 		XX
+0000 		00
+0001 		00
+0010 		00
+0011 		11
+0100 		01
+0101 		01
+0110 		11
+0111 		11
+1000 		10
+1001 		10
+1010 		01
+1011 		01
+1100 		10
+1101 		10
+1110 		01
+1111 		01
 
 You can use pqrs. Using a0a1b0b1 will be harder to read. Use p'q'r's' for prime forms.
 
-Used form: PoS or SoP (Erase what you did not use here)
-c0 = 
+Used form: SoP
+c0 = p'q'rs + p'qr's' + p'qr's + p'qrs' + p'qrs + pq'rs' + pq'rs + pqrs' + pqrs
 
-Used form: PoS or SoP (Erase what you did not use here)
-c1 = 
+
+Used form: SoP
+c1 = p'q'rs + p'qrs' + p'qrs + pq'r's' + pq'r's + pqr's' + pqr's
 
 
 Minimize c0
-c0 = 
-
-
-
-
+c0 = p'q'rs + p'qr's' + p'qr's + p'qrs' + p'qrs + pq'rs' + pq'rs + pqrs' + pqrs
+   = p'q'rs + p'qr' + p'qr + pq'r + pqr
+   = p'q'rs + p'q + pr
 
 Minimize c1
-c1 = 
+c1 = p'q'rs + p'qrs' + p'qrs + pq'r's' + pq'r's + pqr's' + pqr's
+   = p'q'rs + p'qr + pq'r' + pqr'
+   = p'q'rs + p'qr + pr'
