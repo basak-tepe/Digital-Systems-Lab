@@ -1,0 +1,54 @@
+Prelab
+
+int a = 0b00; // 2-bit unsigned integer
+int b = 0b00; // 2-bit unsigned integer
+int c = 0b00; // 2-bit unsigned integer
+
+if (a < 1) and (b < 3):
+	c = 0b00
+else if (a ^ b) < 2: // ^ means xor
+	c = 0b01
+else if a > b:
+	c = 0b10
+else:
+	c = 0b11
+
+
+Fill in the truth table. Change XX values to 00, 01, 10 or 11.
+
+a1a0b1b0 	c1c0
+0000 		XX
+0001 		XX
+0010 		XX
+0011 		XX
+0100 		XX
+0101 		XX
+0110 		XX
+0111 		XX
+1000 		XX
+1001 		XX
+1010 		XX
+1011 		XX
+1100 		XX
+1101 		XX
+1110 		XX
+1111 		XX
+
+You can use pqrs. Using a0a1b0b1 will be harder to read. Use p'q'r's' for prime forms.
+
+Used form: PoS or SoP (Erase what you did not use here)
+c0 = 
+
+Used form: PoS or SoP (Erase what you did not use here)
+c1 = 
+
+
+Minimize c0
+c0 = 
+
+
+
+
+
+Minimize c1
+c1 = 
