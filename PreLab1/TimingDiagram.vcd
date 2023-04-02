@@ -1,0 +1,74 @@
+$date
+	Thu Mar 30 23:22:39 2023
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ns
+$end
+$scope module testbench $end
+$var wire 2 ! cc [1:0] $end
+$upscope $end
+$scope module testbench $end
+$var reg 2 " aa [1:0] $end
+$upscope $end
+$scope module testbench $end
+$var reg 2 # bb [1:0] $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
+#0
+$dumpvars
+b0 #
+b0 "
+b0 !
+$end
+#20
+b1 #
+#40
+b10 #
+#60
+b11 !
+b11 #
+#80
+b1 !
+b0 #
+b1 "
+#100
+b10 !
+b1 #
+#120
+b1 !
+b10 #
+#140
+b10 !
+b11 #
+#160
+b0 #
+b10 "
+#180
+b11 !
+b1 #
+#200
+b10 !
+b10 #
+#220
+b11 !
+b11 #
+#240
+b1 !
+b0 #
+b11 "
+#260
+b10 !
+b1 #
+#280
+b1 !
+b10 #
+#300
+b10 !
+b11 #
+#320
