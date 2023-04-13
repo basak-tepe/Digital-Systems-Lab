@@ -1,0 +1,46 @@
+$date
+	Thu Apr 13 18:00:58 2023
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ns
+$end
+$scope module testbench $end
+$var wire 3 ! yy [2:0] $end
+$upscope $end
+$scope module testbench $end
+$var reg 7 " x [6:0] $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
+#0
+$dumpvars
+b0 "
+b0 !
+$end
+#20
+b1 !
+b1 "
+#40
+b10 !
+b10010 "
+#60
+b11 !
+b1010001 "
+#80
+b100 !
+b1111 "
+#100
+b101 !
+b1001111 "
+#120
+b110 !
+b1111101 "
+#140
+b111 !
+b1111111 "
+#160
