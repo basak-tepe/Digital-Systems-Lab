@@ -6,104 +6,112 @@ module source(y, stateReg, nextStateReg, x, rst, clk);
 
 parameter inputseq = 64'b0001100000110011000011000001100000110000110000110000110000110000;
 
-output reg [0:0]y;
-input wire x;
-input wire rst;
-input wire clk;
-
-//7 STATES OF THE MOORE MACHINE
-parameter 	A = 3'b000, 
-            B = 3'b001, 
-            C = 3'b010,
-            D = 3'b011,
-            E = 3'b100,
-            F = 3'b101, 
-            G = 3'b110;
+  output reg [0:0] y;
+   output reg [2:0] stateReg;
+  output reg [2:0] nextStateReg;
+  input wire x;
+  input wire rst;
+  input wire clk;
 
 
-//Defining registers and initializing them to 0.
-output reg [2:0] stateReg = A;
-output reg [2:0] nextStateReg = 3'b000;
+  // State definitions
+  parameter S0 = 3'b000;
+  parameter S1 = 3'b001;
+  parameter S2 = 3'b010;
+  parameter S3 = 3'b011;
+  parameter S4 = 3'b100;
+  parameter S5 = 3'b101;
+  parameter S6 = 3'b110;
 
-//BELOW HERE 
-always@(stateReg, x) begin
-//FILL ABOVE
-	case(stateReg)
-		A: begin
-			y <= 1'b0;
-			if(x == 0) begin
-				nextStateReg <= A;
-			end
-			else begin
-				nextStateReg <= B;
-			end
-		end
-		B: begin
-			y <= 1'b1;
-			if(x == 0) begin
-				nextStateReg <= A;
-			end
-			else begin
-				nextStateReg <= C;
-			end
-		end
-		C: begin
-			y <= 1'b0;
-			if(x == 0) begin
-				nextStateReg <= B;
-			end
-			else begin
-				nextStateReg <= D;
-			end
-		end
-		D: begin
-			y <= 1'b0;
-			if(x == 0) begin
-				nextStateReg <= C;
-			end
-			else begin
-				nextStateReg <= E;
-			end
-		end
 
-        E: begin
-			y <= 1'b0;
-			if(x == 0) begin
-				nextStateReg <= D;
-			end
-			else begin
-				nextStateReg <= F;
-			end
-		end
+ 
+  always @(stateReg,x) begin
+      case (stateReg)
+        S0: begin
+          if (x == 0) begin
+            nextStateReg <= S1;
+        
+          end else if (x == 1) begin
+            nextStateReg <= S4;
+           
+          end
+        end
+        S1: begin
+          if (x == 0) begin
+            nextStateReg <= S2;
+        
+          end else if (x == 1) begin
+            nextStateReg <= S4;
+           
+          end
+        end
+        S2: begin
+          if (x == 1) begin
+            nextStateReg <= S3; //here
+           end
+           else  begin
+            nextStateReg <= S1;
+          
+          end
+        end
+        S3: begin
+            if (x == 0) begin
+            nextStateReg <= S1;
+        
+          end else if (x == 1) begin
+            nextStateReg <= S5;
+           
+          end
+          
+          end
+        S4: begin
+          if (x == 0) begin
+            nextStateReg <= S1;
+          
+          end else if (x == 1) begin
+            nextStateReg <= S5;
+           
+          end
+        end
+        S5: begin
+          if (x == 1) begin
 
-        F: begin
-			y <= 1'b1;
-			if(x == 0) begin
-				nextStateReg <= E;
-			end
-			else begin
-				nextStateReg <= G;
-			end
-		end
-        G: begin
-			y <= 1'b1;
-			if(x == 0) begin
-				nextStateReg <= E;
-			end
-			else begin
-				nextStateReg <= F;
-			end
-		end
-	endcase
-end
+            nextStateReg <= S4;
+         
+          end 
+          else begin
+            nextStateReg <= S6;
+           end
+          
+        end
+           S6: begin
+          if (x == 0) begin
+            nextStateReg <= S1;
+          end
+          else if (x == 1) begin
+            nextStateReg <= S4;
+           
+          end
 
-always@(posedge clk) begin
+    
+          end
+      endcase
+    end
+  always@(posedge clk) begin
 	if(rst) begin
-		stateReg <= A;
+		stateReg <= S0;
 	end
 	else begin
 		stateReg <= nextStateReg;
 	end
+
+  $display("Current state: %d, Output value: %d", stateReg, y);
+
+  case (stateReg)
+    S3, S6: y <= 1;
+    default: y <= 0;
+  endcase
 end
+
 
 endmodule
