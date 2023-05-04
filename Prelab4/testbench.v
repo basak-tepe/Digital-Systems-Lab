@@ -1,10 +1,10 @@
 `timescale 1ns/1ns
 module testbench();
-wire [63:0] memory;
+wire [127:0] memory;
 wire [7:0] r1;
 wire [7:0] r2;
 wire [7:0] r3;
-reg [11:0] instruction;
+reg [15:0] instruction;
 reg clk;
 integer i;
 
@@ -20,13 +20,25 @@ initial begin
 	000 r3
 	r3(memory[0]) = r1(memory[3]) + r2(memory[7])
 	*/
-	instruction = 12'b000011111000;
+
+	//I added 4 some bits to the end of instruction bits to make it 16
+	//instruction format: opcode - r1 - r2 - r3
+
+
+	//r3 = r1 + r2
+	instruction = 16'b1011110100100001;  //1111 became 0001
 	#20;
-	instruction = 12'b000001000001;
+
+	//r3 = (r1 - r2)
+	instruction = 16'b1100111000100101;
 	#20;
-	instruction = 12'b101000001010;
+
+	//r3 = (r1 * r2)
+	instruction = 16'b1101111101011011;
 	#20;
-	instruction = 12'b110000001011;
+
+	//r3 = (r1 & r2)
+	instruction = 16'b1000011001111010;
 	#20;
     
     

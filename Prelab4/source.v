@@ -17,14 +17,14 @@ parameter 	S0 = 4'b0000,
 			S4 = 4'b0100,
 			S5 = 4'b0101,
 			S6 = 4'b0110,
-			S7 = 4'b0111;
-			S8 = 4'b1000;
-			S9 = 4'b1001;
-			S10 = 4'b1010;
-			S11 = 4'b1011;
-			S12 = 4'b1100;
-			S13 = 4'b1101;
-			S14 = 4'b1110;
+			S7 = 4'b0111,
+			S8 = 4'b1000,
+			S9 = 4'b1001,
+			S10 = 4'b1010,
+			S11 = 4'b1011,
+			S12 = 4'b1100,
+			S13 = 4'b1101,
+			S14 = 4'b1110,
 			S15 = 4'b1111;
 
 		
@@ -47,13 +47,13 @@ end
 always@(posedge clk) begin
 	// Read the first operand from the memory.
 	s = 0;
-	for (i = instruction[7:4] * 8; i < (instruction[7:4] * 8) + 8; i++) begin
+	for (i = instruction[11:8] * 8; i < (instruction[11:8] * 8) + 8; i++) begin
 		r1[s] = memory[i];
 		s = s + 1;
 	end
 	// Read the second operand from the memory.
 	s = 0;
-	for (i = instruction[11:8] * 8; i < (instruction[11:8] * 8) + 8; i++) begin
+	for (i = instruction[7:4] * 8; i < (instruction[7:4] * 8) + 8; i++) begin
 		r2[s] = memory[i];
 		s = s + 1;
 	end
@@ -66,7 +66,6 @@ always@(posedge clk) begin
 	// 101: r3 = r1 & r2
 	// 110: r3 = r1 % r2
 	// 111: r3 = 
-
 
 
 //TASK
