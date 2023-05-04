@@ -88,10 +88,10 @@ always@(posedge clk) begin
 
 	case(instruction[15:12])
 		S0: begin
-			// Write instruction[10:3] into the memory.
+			// Write instruction[11:4] into the memory.
 			s = 0;
 			for (i = instruction[3:0] * 8; i < (instruction[3:0] * 8) + 8; i++) begin
-				memory[i] = instruction[10:3] >> s;
+				memory[i] = instruction[11:4] >> s;
 				s = s + 1;
 			end 
 		end
