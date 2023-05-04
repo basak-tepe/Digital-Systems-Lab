@@ -9,7 +9,7 @@ input wire [15:0] instruction; //instruction register, updated from testbench
 //third part: index val for r2. r2 is loaded with memory[part3]
 //fourth part: index of r3. r1 op r2 = r3. value of r3 is written into memory[part4]
 
-input wire clk;                //clock
+input wire clk;                 //clock
 parameter 	S0 = 4'b0000,
 			S1 = 4'b0001,
 			S2 = 4'b0010,
@@ -57,6 +57,7 @@ always@(posedge clk) begin
 		r2[s] = memory[i];
 		s = s + 1;
 	end
+
 	// Perform the requested operation according to the given operation code.
 	// Update each case and add remaining cases.
 	
@@ -136,34 +137,13 @@ always@(posedge clk) begin
 			end 
 		end
 		S5: begin
-			// Perform the and operation.
-			r3 = r1 & r2;
-			// Write the value of the result into the memory.
-			s = 0;
-			for (i = instruction[3:0] * 8; i < (instruction[3:0] * 8) + 8; i++) begin
-				memory[i] = r3[s];
-				s = s + 1;
-			end 
-		end
+
+		end	
 		S6: begin
-			// Perform the xor operation.
-			r3 = r1 ^ r2;
-			// Write the value of the result into the memory.
-			s = 0;
-			for (i = instruction[3:0] * 8; i < (instruction[3:0] * 8) + 8; i++) begin
-				memory[i] = r3[s];
-				s = s + 1;
-			end 
-		end
+		
+		end	
+
 		S7: begin
-			// Perform the modulo operation.
-			r3 = r1 % r2;
-			// Write the value of the result into the memory.
-			s = 0;
-			for (i = instruction[3:0] * 8; i < (instruction[3:0] * 8) + 8; i++) begin
-				memory[i] = r3[s];
-				s = s + 1;
-			end 
 		end
 
 		S8: begin
