@@ -1,2 +1,1 @@
-# Digital-Systems-Lab
-Lab work for CMPE240
+Digital Systems lab work in Verilog
